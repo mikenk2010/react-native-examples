@@ -1,0 +1,3 @@
+rootProject.name = 'W1ExeHWNavigator'
+
+include ':app'
