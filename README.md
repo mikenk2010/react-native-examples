@@ -29,4 +29,4 @@ navigator.push({
 ```
 
 ### DEMO
-![Image](blob:http://imgur.com/d0d624ed-5aaa-4929-9a3b-1bc7b3769bba)
+![Image](send_value_nav.gif)
