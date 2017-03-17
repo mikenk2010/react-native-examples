@@ -29,4 +29,4 @@ navigator.push({
 ```
 
 ### DEMO
-[http://imgur.com/a/ncrqC](http://imgur.com/a/ncrqC)
+![Image](send_value_nav.gif)
