@@ -26,7 +26,7 @@ export default class W1ExeHWNavigator extends Component {
     super(props);
 
     this.state = {
-      inputtext : ''
+      inputText : ''
     }
   }
   render() {
@@ -39,31 +39,23 @@ export default class W1ExeHWNavigator extends Component {
   );
 }
 
-sendTextValue(){
-  navigator.push({
-    passProps: {
-      movieId: this.state.inputtext
-    },
-    index: 1
-  })
-}
-
 _renderScene(route, navigator) {
     switch (route.index) {
       case 0:
         return (
           <View>
+            <Text>Home Page</Text>
             <TextInput
                style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-               onChangeText={(inputtext) => this.setState({inputtext})}
-               value={this.state.inputtext}
+               onChangeText={(inputText) => this.setState({inputText})}
+               value={this.state.inputText}
              />
 
              <Button onPress={() =>
                {
                  navigator.push({
                    passProps: {
-                     movieId: this.state.inputtext
+                     movieId: this.state.inputText
                    },
                    index: 1
                  })
@@ -88,8 +80,9 @@ export class DetailPage extends Component{
   render(){
     return(
       <View>
-        <Text>Screen detail</Text>
-        <Text>Value from 1st screen: {this.props.dataMovieId}</Text>
+        <Text>Detail page</Text>
+        <Text>Value from 1st screen: </Text>
+        <Text style={{fontWeight:'bold'}}>{this.props.dataMovieId}</Text>
         <Button onPress={() =>
           {
             this.props.navigator.pop({
