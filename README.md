@@ -29,4 +29,4 @@ navigator.push({
 ```
 
 ### DEMO
-![Image](http://imgur.com/a/ncrqC)
+[http://imgur.com/a/ncrqC](http://imgur.com/a/ncrqC)
