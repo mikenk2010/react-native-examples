@@ -11,7 +11,9 @@ import {
   Text,
   View,
   Navigator,
-  TouchableHighlight
+  TouchableHighlight,
+  TextInput,
+  Button
 } from 'react-native';
 
 const routes = [
@@ -20,8 +22,14 @@ const routes = [
 ];
 
 export default class W1ExeHWNavigator extends Component {
-  render() {
+  constructor(props){
+    super(props);
 
+    this.state = {
+      inputtext : ''
+    }
+  }
+  render() {
   return (
     <Navigator
       initialRoute={routes[0]}
@@ -31,32 +39,44 @@ export default class W1ExeHWNavigator extends Component {
   );
 }
 
+sendTextValue(){
+  navigator.push({
+    passProps: {
+      movieId: this.state.inputtext
+    },
+    index: 1
+  })
+}
+
 _renderScene(route, navigator) {
     switch (route.index) {
       case 0:
         return (
-          <TouchableHighlight onPress={() => {
-            if (route.index === 0) {
-              navigator.push(
-                {
-                passProps: {movieId: '<set value here>'},
-                index: 1
-              });
-            } else {
-              navigator.pop();
-            }
-          }}>
-
           <View>
-            <Text>Hello {route.title}!</Text>
+            <TextInput
+               style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+               onChangeText={(inputtext) => this.setState({inputtext})}
+               value={this.state.inputtext}
+             />
+
+             <Button onPress={() =>
+               {
+                 navigator.push({
+                   passProps: {
+                     movieId: this.state.inputtext
+                   },
+                   index: 1
+                 })
+               }
+             }
+             title="Send" />
           </View>
-          </TouchableHighlight>
         );
         break;
       case 1:
         return (
             <View>
-              <DetailPage dataMovieId={route.passProps.movieId} />
+              <DetailPage dataMovieId={route.passProps.movieId} navigator={navigator} />
             </View>
         );
         break;
@@ -70,6 +90,14 @@ export class DetailPage extends Component{
       <View>
         <Text>Screen detail</Text>
         <Text>Value from 1st screen: {this.props.dataMovieId}</Text>
+        <Button onPress={() =>
+          {
+            this.props.navigator.pop({
+              index: 0
+            })
+          }
+        }
+        title="Back" />
       </View>
     )
   }
