@@ -1,4 +1,4 @@
-#Anination Example
+# Anination Example
 
-## Demo
+### Demo
 ![Image](animation.gif)
